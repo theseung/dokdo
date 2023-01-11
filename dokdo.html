@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://webfontworld.github.io/seoulhangang/SeoulHangangC.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+        <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js" integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+        <script>
+            Kakao.init('2fdda681c16383997298f728d81a56e7'); // 사용하려는 앱의 JavaScript 키 입력
+        </script>
+        <style>
+            *{margin: 0; padding: 0; border:none; box-sizing: border-box;}
+            html, body{width: 100%; height: 100%;}
+            body{background-image: linear-gradient(to bottom, rgba(54, 122, 174, 0.85), rgba(48, 161, 174, 0.76)); font-family: 'SeoulHangangC'; background-size: cover;}
+            
+            #main{text-align: center; background: url(./img/bottom.png); background-position: bottom center; height: 100%; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: space-around; position: relative;}
+            #main .title{width: 100%; text-align: center; color: #fff; font-size: 6.25vw; line-height: 10.41vw;}
+            #main .cloud{position: absolute; width: 100%; top: 0; left: 0; z-index: -1;}
+            .start{color: #1e558d; font-size: 8.333vw; padding: 5vw 0; cursor: pointer;}
+            .sns{color: #fff; margin-top: 15vw;}
+            .sns .msg{font-size: 5.2vw; margin-bottom: 7.5vw;}
+            .sns .total_num{font-size: 4.166vw; margin-bottom: 8vw;}
+            .sns .share{font-size: 4.166vw; display: flex; justify-content: center; align-items: center;}
+            .sns .share img{width: 5vw; margin-right: 3vw;}
+            .sns .sns_icon{text-align: center; margin-top: 5vw;}
+            .sns .sns_icon img{width: 10vw; padding: 0 2vw;}
+            
+            #desc{width: 100%; height: 300%;}
+                #desc .bg{background-image: linear-gradient(to bottom, rgba(54, 122, 174, 1), rgba(48, 161, 174, 1)); width: 100%; height: 100%; position:fixed; z-index: 1; top: 0; left: 0;}
+                #desc .scroll{position: fixed; bottom: 5vw; color: #fff; display: flex; flex-direction: column; text-align: center; width: 100%; font-size: 3vw; font-weight: bold; justify-content:center; align-items: center; z-index: 100;}
+                    #desc .scroll img{width: 7vw;}
+                #desc .page{height: 100%; height: 33.3333%; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; background-image: none;}
+                    #desc .page .msg{color: #fff; font-size: 5vw; line-height: 6.25vw; margin: 0 auto; width: 80%; text-align: left;}
+                #desc .page2{text-align: center;}
+                    #desc .page .copy{margin-right: 2.1vw; font-size: 5.2vw; text-align: right; margin-top: 3.333vw; color: #fff;}
+
+            #question{text-align: center; background: url(./img/bottom.png); background-size: 100% auto; background-position: bottom center; height: 100%; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center;}
+                #question .title{width: 100%; text-align: center; color: #fff; font-size: 6.25vw; line-height: 10.41vw; margin-bottom: 11.04vw;}
+                #question img{width: 100%;}
+                #question .answer{font-size: 5.833vw; color: #fff; cursor: pointer;}
+                #question .ok{margin-bottom: 7.7vw; margin-top: 12.29vw;}
+            
+            /* #main,  */
+            #desc, #question, #answer{display: none;}
+
+            #answer{text-align: center; background: url(./img/bottom.png); background-size: 100% auto; background-position: bottom center; min-height: 100%; background-repeat: no-repeat; text-align: left; color: #fff;}
+                #answer .title{font-size: 4.1vw; padding-left: 8.541vw; padding-top: 10vw;}
+                #answer .name{padding-left: 13.9vw; padding-top: 4.79vw; font-size: 6.25vw; line-height: 10.41vw;}
+                #answer img{width: 100%; margin-top: 2vw;}
+                #answer .msg{margin-top: 21.25vw; font-size: 4.16vw; line-height: 6.25vw; text-align: center; height: 17.9vw;}
+                #answer .desc{padding: 0 5.6vw; font-size: 3.125vw; line-height: 6.25vw; margin-top: 8.54vw; text-align: left; margin-bottom: 18.3vw;}
+                #answer .another{text-align: center; font-size: 4.166vw; padding-bottom: 8.54vw;}
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <img src="img/cloud.png" alt="" class="cloud">
+            <p class="title">
+                나랑 비슷한<br>
+                독도를 지킨 인물 <br>
+                알아보기
+            </p>
+            <p class="start">GO!</p>
+            <div class="sns">
+                <p class="msg">함께한 사람</p>
+                <p class="share">
+                    <img src="./img/share.png" alt="">
+                    SHARE
+                </p>
+                <div class="sns_icon">
+                    <img src="./img/link.png" alt="" onclick="shareMessage()">
+                    <img src="./img/link.png" alt="" id="get_link">
+                </div>
+            </div>
+        </div>
+        <div id="desc"> 
+            <div class="bg"></div>
+            <div class="scroll">
+                <p class="msg">스크롤을 아래로 내려주세요</p>
+                <img src="img/arrow.png" alt="">
+            </div>
+            <div class="page">
+                <p class="msg">
+                    10월 25일은 독도의 날이다. <br>
+                    <br>
+                    다른 기념일과 달리 공휴일이<br>
+                    아니라 사람들은 이날이 독도의 날인지<br>
+                    모르는 경우가 많다.
+                </p>
+                <img src="img/bottom.png" alt="">
+            </div>
+            <div class="page page2">
+                <p class="msg">
+                    '독도는 역사적·지리적·국제법적으로 명백한 대한민국 고유의 영토입니다'<br>
+                    <br>
+                    '독도에 대한 영유권 분쟁은 존재하지 않으며, 독도는 외교 교섭이나 사법적 해결의 대상이 될 수 없습니다',
+                </p>
+                <img src="img/bottom.png" alt="">
+                <p class="copy">출처 : 독도 외교부</p>
+            </div>
+            <div class="page">
+                <img src="img/desc_page3.png" alt="">
+                <p class="msg">
+                    신라시대 때 이사부 장군부터<br>
+                    독도 주민 최종덕 분 까지 우리 독도를 지키는데 수많은 사람들의 노력이 있었다. 이런 분들의 노력이 헛되지 않도록 우리는 독도에 관심을 갖고 주권 수호의 의지를 가져야한다.
+                </p>
+            </div>
+        </div>
+        <div id="question">
+            <p class="title">
+                사람들 앞에서 <br>
+                나의 의견을 말하는데 <br>
+                어려움이 없는 편이다.
+            </p>
+            <img src="img/page5.png" alt="" class="question_img">
+            <p class="answer ok" data-page="6">예</p>
+            <p class="answer no" data-page="7">아니요</p>
+        </div>
+        <div id="answer">
+            <div class="title">나와 비슷한 인물은?</div>
+            <p class="name">울릉도 수토관<br>장한상</p>
+            <img src="img/result22.png" alt="">
+            <p class="msg">"장한상 같은 사람 몇 명만 있으면<br>대국도 감히 모욕하지 못할 것이다"</p>
+            <p class="desc">울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.</p>
+            <p class="another">다른 인물 알아보기</p>
+        </div>
+        <script>
+              function shareMessage() {
+                alert("준비중입니다.");
+                // Kakao.Share.sendCustom({
+                // templateId: 88350,
+                // templateArgs: {
+                //     title: '라이언이 즐겨먹던 바로 그 틴케이스 치즈볼',
+                //     description: '바라만 봐도 즐거워지는 힐링 패키지에는 시크릿 스토리가 숨어있어요.',
+                // },
+                // });
+            }
+
+            $(function (){
+                data = [];
+                data[5] = {'ok':6,'no':7};
+                data[6] = {'ok':9,'no':14};
+                data[7] = {'ok':11,'no':8};
+                data[8] = {'ok':12,'no':13};
+                data[9] = {'ok':14,'no':15};
+                data[10] = {'ok':16,'no':9};
+                data[16] = {'ok':19,'no':17};
+                data[17] = {'ok':20,'no':19};
+                data[19] = {'ok':21,'no':22};
+                result = [];
+                result[11] = {
+                    'name' : '독도 러버 조준기',
+                    'message' : `"민간인 거주만큼 <br>우리땅의 가치를 높이는 것은 없다"`,
+                    'desc' : `독도 2호 주민 ‘조준기’분은 해병대원으로 울릉도에서 근무한 것이 인연이 돼 독도 1호 주민 최종덕씨의 딸과 결혼하여 그 뒤를 이어 독도로 주소를 옮겼다.<br><br>생업을 위해 8년동안 거주하던 독도에서 뭍으로 나온 이후 노래방을 개업했을 때, <독도 노래방>, 식당은 <독도 홍합 돌솥밥>이라는 상호를 쓰면서 독도 사랑을 널리 알렸다.<br><br>1987년부터는 <독도 사랑회>의 고문으로 활동하면서 독도사랑 노래보급, 독도 사진전 개최하였으며, 연합뉴스와 인터뷰에서 "민간인 거주만큼 우리땅의 가치를 높이는 것은 없다"며,"독도사랑, 독도지키기가 일회성 운동이 되지 말고 전 국민의 가슴 속에 있어야 일본의 망언에 대처 할 수 있다"고 말했다`
+                };
+                result[12] = {
+                    'name' : '독도 1호 주민<br>최종덕',
+                    'message' : `"단 한 명이라도 우리 주민이 독도에 <br>살고 있다는 증거를 남기겠다"`,
+                    'desc' : `최종덕은 일본이 독도 영유권을 주장하자 독도가 무인도가 아니며 한국인이 거주하고 있음을 알리기 위해 1981년 독도로 주민등록을 옮기고 거주한 독도 주민 1호이다.<br><br>5년동안 독도에 거주하면서 서도 선착장의 시멘트 가옥을 비롯한 가파른 바위섬에 식수가 나는 물골로 이어지는 시멘트 계단을 설치하는 등 편의 시설을 건립하였다.<br><br>또한 수중 창고를 마련하고 전복 수정법, 특수 어망을 개발하며 독도 정착에 기본적인 틀을 제공했다.`
+                };
+                result[13] = {
+                    'name' : '독도 1호 사업자<br>김성도',
+                    'message' : `"하늘에서도<br>독도를 수호하겠다"`,
+                    'desc' : `독도 1호 사업자인 김성도는 부인 김신영과 함꼐 독도 주민이 되었다. 독도는 전화도 인터넷도 안되고 빗물을 받아쓸만큼 척박한 곳이지만 독도를 사랑하는 마음 하나로 독도에 거주했다.<br><br>2013년 5월부터 독도사랑 카페를 운영하고 독도 선착장에서 관광기념품을 팔며 평범한 삶을 살았지만 그가 이끌어낸 성과는 평범하지않았다.<br>그는 기념품을 판매한 수익을 통해 독도 주민 최초로 부가가치를 창출하고, 독도에서 경제활동이 가능하다는 것을 보여줬다.<br><br>이는 독도에 대한 영유권을 주장하기 위해 가장 필요한 것은 “실효지배”여부인데 김성도가 독도에서 한 경제활동을 통해 세금을 납부하면서 실효지배의 명분이 더욱 공고해졌다.`
+                };
+                result[14] = {
+                    'name' : '끝까지 독도를 지킨 <br>홍순칠',
+                    'message' : `" 이 땅이 뉘 땅인데"`,
+                    'desc' : `1929년 일제강점기때 울릉도에서 태어나 조선국방경비대에 입대해 군인이 되었고 6.25 전쟁에 참전했다가 부상을 당해 전역했다. <br><br>전역 후에는 독도의용수비대를 결성해 이끌었으며 독도대첩 당시 전투를 성공적으로 지휘해 일본 해상보안청의 침곡을 격퇴 시켰다.<br><br>이후에도 독도는 대한민국의 땅임을 알리며 경상남도에 독도개발계획서를 내는 등 다양한 수호활동을 하였지만 박정희 정부는 그의 활동이 일본과의 관계에 악영향을 준다고  부담스럽게 여겨 중앙정보부에 끌려갔다. 말년에는 폐암치료를 받으며 잡지에 글을 연재했다.`
+                };
+                result[15] = {
+                    'name' : '지략가 이사부',
+                    'message' : `"너희들이 만일 항복하지 않으면 <br>이 맹수들을 풀어 놓아서 밟아 죽이겠다."`,
+                    'desc' : `신라의 이사부 장군은 오늘의 한국을 있게 한 중요한 역사적 인물이다. <br><br>이사부 장군이 정벌해 새로 신라영토로 흡수한 곳에는 실직국, 우산국, 예국, 맥국, 금관국, 대가야, 왜국 등이 있는데, 그중 우산국을 정벌 할 때 설화가 유명하다. <br><br>이사부는 군사력이 아니라 머리를 써서 전투를 성공했는데, 그곳 사람들이 미련하고 사나워서, 힘으로 항복 받기 어려우나, 꾀를 써서 굴복시킬 수 있다고 생각했다. 이에 나무로 사자를 많이 만들어 전함에 나누어 싣고 해안으로 다가가 “너희들이 만일 항복하지 않으면 이 맹수들을 풀어 놓아서 밟아 죽이겠다”고 알렸다. 우산국 사람들은 두려워하여 즉시 항복했다.`
+                };
+                result[18] = {
+                    'name' : '울릉도 검찰사 <Br>이규원',
+                    'message' : `"규원은 재능과 지혜를 갖추고 청렴과 결백으로서 유명하였다"`,
+                    'desc' : `이규원은 고종 때 울릉도 검찰사라는 직을 수행한 사람이며 그가 수행했던 일은 우리가 독도가 우리땅이라고 주장할 수 있는 가장 강력한 근거를 마련해주었다.<br>그 이유는 독도는 울릉도의 부속도서로서 울릉도와 항상 운명을 같이해야 하기 때문이고 울릉도는 우리나라의 영토임이 분명하기 때문이다. <br><br>울릉도에서 있던 일들뿐 만 아니라 울릉도의 지형, 날씨, 특별한 기후 현상 등 자세한 기록들과 보고 느낀 것까지 자세히 “울릉도검찰일기”에 기록하였다.<br><br>일본 민간인들이 불법적인 벌목을 하자 고종에게 “울릉도개척령”을 내려야한다고 주장하며 “울릉도검찰일기”는 개척령이 내리게 되는 기초자료로 중요한 역할을 했다.`
+                };
+                result[20] = {
+                    'name' : '민간인 외교관 안용복',
+                    'message' : `"내가 무슨 죄가 있는가?<br>오히려 조선의 바다를 침범하여 불법으로 고기잡이 <br>한 그대들 나라의 어부들이 잘못한것이요."`,
+                    'desc' : `안용복은 조선 후기 울릉도와 독도가 조선땅임을 확실히 한 어부이다. 숙종 연간 동래부 출신으로 울릉도에서 고기잡이를 하던 중 일본 어부와 다투다 일본으로 잡혀갔다.<br><br>울릉도가 우리 땅임을 당당히 주장하고 일본 막부로부터 이를 인정하는 서계를 받아왔는데, 사태가 반복되자 일본 어선을 추격하여 국경침범 사실을 항의하고 사과까지 받아냈다.<br><br>나라의 허락 없이 국제 문제를 일으켰다는 이유로 조정에 압송되어 사형까지 논의되었으나 남구만의 만류로 귀양으로 마무리되었다. 그의 활약으로 철종 때까지는 울릉도에 대한 분쟁이 없었다.`
+                };
+                result[21] = {
+                    'name' : '울릉 군수<br>심흥택',
+                    'message' : `"에 보고하니 살펴주시기를 <br>엎드려 바랍니다."`,
+                    'desc' : `울릉군수 심흥택은 독도라는 명칭을 대한제국 공식 문서상에서 최초로 사용하였다.<br><br>심흥택이 독도가 일본영토가 되었다는 소식을 듣고 고종에게 올린 보고서이다.<br>“울릉도를 방문한 일본인 일행을 통해 1906년 3월 28일 독도가 일본 영토로 편입되었다는 사실을 통보받은 울릉군수 심흥택은 다음 날 바로 강원도관찰사에게 보고하였는데, 그 내용은 강원도관찰사 서리 춘천군수 이명래가 1906년 4월 29일자로 의정부 참정대신에게 올린 ‘보고서 호외’에 수록되어 있다. 심흥택은 강원도관찰사에게 보고하면서 동시에 중앙 정부에 보고가 늦어질 것을 우려하여 같은 내용의 보고서를 직접 내부에도 발송하였다.”`
+                };
+                result[22] = {
+                    'name' : '울릉도 수토관<br>장한상',
+                    'message' : `"장한상 같은 사람 몇 명만 있으면<Br>대국도 감히 모욕하지 못할 것이다"`,
+                    'desc' : `울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.`
+                };
+
+                scroll_ok = false;
+                $("#main .start").click(function (){
+                    $("#main").hide();
+                    $("#desc").show();
+
+                    scroll_ok = true;
+                })
+
+                $(".answer").click(function (){
+                    page = $(this).attr('data-page');
+                    if(data[page]){
+                        $(".answer.ok").attr('data-page',data[page].ok);
+                        $(".answer.no").attr('data-page',data[page].no);
+                        $(".question_img").attr('src',"img/page"+page+".png");
+                    }else{
+                        $("#question").hide();
+                        $("#answer").show();
+                        $("body, html").css({'height':'auto'})
+                        $("#answer .name").html(result[page].name);
+                        $("#answer .msg").html(result[page].message);
+                        $("#answer .desc").html(result[page].desc);
+                    }
+                });
+
+                window.addEventListener("wheel", function(e){
+                    if(scroll_ok){
+                        e.preventDefault();
+                    }
+                },{passive : false});
+
+                var $html = $("html");
+                var page = 1;
+                var lastPage = $("#desc .page").length;
+
+                $html.animate({scrollTop:0},10);
+
+                $(window).on("scroll", function(e){
+                    if(scroll_ok){
+                        if ( $(window).scrollTop() >= $(document).height() - $(window).height() ){
+                            $(".scroll .msg").text("1초 후 페이지가 이동합니다.");
+                            setTimeout(() => {
+                                $("#desc").hide();
+                                $("#question").css({'display':'flex'});
+                                scroll_ok = false;
+                            }, 1000);            
+                        }
+                    }
+                });
+
+                $("#get_link").click(function (){
+                    navigator.clipboard.writeText(window.location.href)
+                    .then(function () {
+                        alert('링크 복사가 완료되었습니다.');
+                    })
+                    .catch(() => {
+                        alert("링크 복사가 지원하지 않습니다. 카카오톡 공유를 이용해주세요.");
+                    });
+                
+                });
+
+                $(window).on("wheel", function(e){
+                    if(scroll_ok){
+                        if($html.is(":animated")){
+                            return;
+                        }
+
+                        if(e.originalEvent.deltaY > 0){
+                            if(page== lastPage) return;
+
+                            page++;
+                        }else if(e.originalEvent.deltaY < 0){
+                            if(page == 1) return;
+                            page--;
+                        }0
+                        var posTop = (page-1) * $(window).height();
+
+                        if(page == 3){
+                            $(".scroll .msg").text("1초 후 페이지가 이동합니다.");
+                            setTimeout(() => {
+                                $("#desc").hide();
+                                $("#question").css({'display':'flex'});
+                                scroll_ok = false;
+                            }, 2000);
+                        }
+
+                        $html.animate({scrollTop : posTop});
+                    }
+                });   
+            })
+        </script>
+    </body>
+</html>
