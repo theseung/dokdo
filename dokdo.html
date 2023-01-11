@@ -5,9 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="slick/slick.css">
+        <link rel="stylesheet" href="slick/slick-theme.css">
         <link href="https://webfontworld.github.io/seoulhangang/SeoulHangangC.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
         <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js" integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+        <script src="slick/slick.min.js"></script>
         <script>
             Kakao.init('2fdda681c16383997298f728d81a56e7'); // 사용하려는 앱의 JavaScript 키 입력
         </script>
@@ -21,12 +24,12 @@
             #main .cloud{position: absolute; width: 100%; top: 0; left: 0; z-index: -1;}
             .start{color: #1e558d; font-size: 8.333vw; padding: 5vw 0; cursor: pointer;}
             .sns{color: #fff; margin-top: 15vw;}
-            .sns .msg{font-size: 5.2vw; margin-bottom: 7.5vw;}
-            .sns .total_num{font-size: 4.166vw; margin-bottom: 8vw;}
-            .sns .share{font-size: 4.166vw; display: flex; justify-content: center; align-items: center;}
-            .sns .share img{width: 5vw; margin-right: 3vw;}
-            .sns .sns_icon{text-align: center; margin-top: 5vw;}
-            .sns .sns_icon img{width: 10vw; padding: 0 2vw;}
+                .sns .msg{font-size: 5.2vw; margin-bottom: 7.5vw;}
+                .sns .total_num{font-size: 4.166vw; margin-bottom: 8vw;}
+                .sns .share{font-size: 4.166vw; display: flex; justify-content: center; align-items: center;}
+                .sns .share img{width: 5vw; margin-right: 3vw;}
+                .sns .sns_icon{text-align: center; margin-top: 5vw;}
+                .sns .sns_icon img{width: 10vw; padding: 0 2vw;}
             
             #desc{width: 100%; height: 300%;}
                 #desc .bg{background-image: linear-gradient(to bottom, rgba(54, 122, 174, 1), rgba(48, 161, 174, 1)); width: 100%; height: 100%; position:fixed; z-index: 1; top: 0; left: 0;}
@@ -47,12 +50,17 @@
             #desc, #question, #answer{display: none;}
 
             #answer{text-align: center; background: url(./img/bottom.png); background-size: 100% auto; background-position: bottom center; min-height: 100%; background-repeat: no-repeat; text-align: left; color: #fff;}
+                #answer .con{position: relative; z-index: 3;}
+                #answer .sns{padding-bottom: 40vw;}
+                #answer .bg{background-image: linear-gradient(to bottom, rgba(54, 122, 174, 1), rgba(48, 161, 174, 1)); width: 100%; height: 100%; position:fixed; z-index: 1; top: 0; left: 0;}
                 #answer .title{font-size: 4.1vw; padding-left: 8.541vw; padding-top: 10vw;}
                 #answer .name{padding-left: 13.9vw; padding-top: 4.79vw; font-size: 6.25vw; line-height: 10.41vw;}
-                #answer img{width: 100%; margin-top: 2vw;}
+                #answer .person{width: 100%; margin-top: 2vw;}
                 #answer .msg{margin-top: 21.25vw; font-size: 4.16vw; line-height: 6.25vw; text-align: center; height: 17.9vw;}
                 #answer .desc{padding: 0 5.6vw; font-size: 3.125vw; line-height: 6.25vw; margin-top: 8.54vw; text-align: left; margin-bottom: 18.3vw;}
                 #answer .another{text-align: center; font-size: 4.166vw; padding-bottom: 8.54vw;}
+                    #answer .people .char{width: 24.7vw; height: 24.7vw; background: rgba(255,255,255,0.36); border-radius: 3.54vw; margin:0 2.088vw; display: flex; justify-content: center; align-items: flex-end;}
+                        #answer .people .char img{width:70%;}
         </style>
     </head>
     <body>
@@ -65,13 +73,12 @@
             </p>
             <p class="start">GO!</p>
             <div class="sns">
-                <p class="msg">함께한 사람</p>
                 <p class="share">
                     <img src="./img/share.png" alt="">
                     SHARE
                 </p>
                 <div class="sns_icon">
-                    <img src="./img/link.png" alt="" onclick="shareMessage()">
+                    <img src="./img/kakao.png" alt="" onclick="shareMessage()">
                     <img src="./img/link.png" alt="" id="get_link">
                 </div>
             </div>
@@ -120,23 +127,60 @@
             <p class="answer no" data-page="7">아니요</p>
         </div>
         <div id="answer">
-            <div class="title">나와 비슷한 인물은?</div>
-            <p class="name">울릉도 수토관<br>장한상</p>
-            <img src="img/result22.png" alt="">
-            <p class="msg">"장한상 같은 사람 몇 명만 있으면<br>대국도 감히 모욕하지 못할 것이다"</p>
-            <p class="desc">울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.</p>
-            <p class="another">다른 인물 알아보기</p>
+            <div class="bg"></div>
+            <div class="con">
+                <div class="title">나와 비슷한 인물은?</div>
+                <p class="name">울릉도 수토관<br>장한상</p>
+                <img src="img/result22.png" alt="" class="person">
+                <p class="msg">"장한상 같은 사람 몇 명만 있으면<br>대국도 감히 모욕하지 못할 것이다"</p>
+                <p class="desc">울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.</p>
+                <p class="another">다른 인물 알아보기</p>
+                <div class="people">
+                    <div class="char">
+                        <img src="img/thumb11.png" alt="" data-result="11">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb12.png" alt="" data-result="12">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb13.png" alt="" data-result="13">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb14.png" alt="" data-result="14">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb15.png" alt="" data-result="15">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb18.png" alt="" data-result="18">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb20.png" alt="" data-result="20">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb21.png" alt="" data-result="21">
+                    </div>
+                    <div class="char">
+                        <img src="img/thumb22.png" alt="" data-result="22">
+                    </div>
+                </div>
+                <div class="sns">
+                    <p class="share">
+                        <img src="./img/share.png" alt="">
+                        SHARE
+                    </p>
+                    <div class="sns_icon">
+                        <img src="./img/kakao.png" alt="" onclick="shareMessage()">
+                        <img src="./img/link.png" alt="" id="get_link">
+                    </div>
+                </div>
+            </div>
         </div>
         <script>
               function shareMessage() {
-                alert("준비중입니다.");
-                // Kakao.Share.sendCustom({
-                // templateId: 88350,
-                // templateArgs: {
-                //     title: '라이언이 즐겨먹던 바로 그 틴케이스 치즈볼',
-                //     description: '바라만 봐도 즐거워지는 힐링 패키지에는 시크릿 스토리가 숨어있어요.',
-                // },
-                // });
+                Kakao.Share.sendCustom({
+                    templateId: 88350
+                });
             }
 
             $(function (){
@@ -168,7 +212,7 @@
                 };
                 result[14] = {
                     'name' : '끝까지 독도를 지킨 <br>홍순칠',
-                    'message' : `" 이 땅이 뉘 땅인데"`,
+                    'message' : `"이 땅이 뉘 땅인데"`,
                     'desc' : `1929년 일제강점기때 울릉도에서 태어나 조선국방경비대에 입대해 군인이 되었고 6.25 전쟁에 참전했다가 부상을 당해 전역했다. <br><br>전역 후에는 독도의용수비대를 결성해 이끌었으며 독도대첩 당시 전투를 성공적으로 지휘해 일본 해상보안청의 침곡을 격퇴 시켰다.<br><br>이후에도 독도는 대한민국의 땅임을 알리며 경상남도에 독도개발계획서를 내는 등 다양한 수호활동을 하였지만 박정희 정부는 그의 활동이 일본과의 관계에 악영향을 준다고  부담스럽게 여겨 중앙정보부에 끌려갔다. 말년에는 폐암치료를 받으며 잡지에 글을 연재했다.`
                 };
                 result[15] = {
@@ -178,7 +222,7 @@
                 };
                 result[18] = {
                     'name' : '울릉도 검찰사 <Br>이규원',
-                    'message' : `"규원은 재능과 지혜를 갖추고 청렴과 결백으로서 유명하였다"`,
+                    'message' : `"규원은 재능과 지혜를 갖추고 청렴과<br> 결백으로서 유명하였다"`,
                     'desc' : `이규원은 고종 때 울릉도 검찰사라는 직을 수행한 사람이며 그가 수행했던 일은 우리가 독도가 우리땅이라고 주장할 수 있는 가장 강력한 근거를 마련해주었다.<br>그 이유는 독도는 울릉도의 부속도서로서 울릉도와 항상 운명을 같이해야 하기 때문이고 울릉도는 우리나라의 영토임이 분명하기 때문이다. <br><br>울릉도에서 있던 일들뿐 만 아니라 울릉도의 지형, 날씨, 특별한 기후 현상 등 자세한 기록들과 보고 느낀 것까지 자세히 “울릉도검찰일기”에 기록하였다.<br><br>일본 민간인들이 불법적인 벌목을 하자 고종에게 “울릉도개척령”을 내려야한다고 주장하며 “울릉도검찰일기”는 개척령이 내리게 되는 기초자료로 중요한 역할을 했다.`
                 };
                 result[20] = {
@@ -197,6 +241,11 @@
                     'desc' : `울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.`
                 };
 
+                if(searchParam("result")){
+                    page = searchParam("result");
+                    viewresult(page);
+                }
+
                 scroll_ok = false;
                 $("#main .start").click(function (){
                     $("#main").hide();
@@ -212,14 +261,14 @@
                         $(".answer.no").attr('data-page',data[page].no);
                         $(".question_img").attr('src',"img/page"+page+".png");
                     }else{
-                        $("#question").hide();
-                        $("#answer").show();
-                        $("body, html").css({'height':'auto'})
-                        $("#answer .name").html(result[page].name);
-                        $("#answer .msg").html(result[page].message);
-                        $("#answer .desc").html(result[page].desc);
+                        location.href = "?result="+page;
                     }
                 });
+
+                $(".char").click(function (){
+                    page = $(this).find("img").attr('data-result');
+                    location.href = "?result="+page;
+                })
 
                 window.addEventListener("wheel", function(e){
                     if(scroll_ok){
@@ -284,8 +333,35 @@
 
                         $html.animate({scrollTop : posTop});
                     }
-                });   
+                });  
+                
+                $('#answer .people').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    dots: false,
+                    arrows:false,
+                    autoplay: true,
+                    centermode:true,
+                    focusOnSelect: true,
+                    autoplaySpeed: 1000,
+                    infinite: true
+                });
             })
+
+            function searchParam(key) {
+                return new URLSearchParams(location.search).get(key);
+            };
+            function viewresult(page){
+                $(window).scrollTop(0);
+                $("#main").hide();
+                $("#question").hide();
+                $("#answer").show();
+                $("body, html").css({'height':'auto'})
+                $("#answer .person").attr('src',"img/result"+page+".png");
+                $("#answer .name").html(result[page].name);
+                $("#answer .msg").html(result[page].message);
+                $("#answer .desc").html(result[page].desc);
+            }
         </script>
     </body>
 </html>
