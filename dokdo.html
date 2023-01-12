@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>.</title>
         <link rel="stylesheet" href="slick/slick.css">
         <link rel="stylesheet" href="slick/slick-theme.css">
         <link href="https://webfontworld.github.io/seoulhangang/SeoulHangangC.css" rel="stylesheet">
@@ -41,13 +41,13 @@
                     #desc .page .copy{margin-right: 2.1vw; font-size: 5.2vw; text-align: right; margin-top: 3.333vw; color: #fff;}
 
             #question{text-align: center; background: url(./img/bottom.png); background-size: 100% auto; background-position: bottom center; height: 100%; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center;}
-                #question .title{width: 100%; text-align: center; color: #fff; font-size: 6.25vw; line-height: 10.41vw; margin-bottom: 11.04vw;}
+                #question .title{width: 100%; text-align: center; color: #fff; font-size: 6.25vw; line-height: 10.41vw; margin-bottom: 11.04vw; height: 30vw;}
                 #question img{width: 100%;}
                 #question .answer{font-size: 5.833vw; color: #fff; cursor: pointer;}
                 #question .ok{margin-bottom: 7.7vw; margin-top: 12.29vw;}
             
-            /* #main,  */
-            #desc, #question, #answer{display: none;}
+            /* #main, */
+            #answer, #desc, #question{display: none;}
 
             #answer{text-align: center; background: url(./img/bottom.png); background-size: 100% auto; background-position: bottom center; min-height: 100%; background-repeat: no-repeat; text-align: left; color: #fff;}
                 #answer .con{position: relative; z-index: 3;}
@@ -59,8 +59,10 @@
                 #answer .msg{margin-top: 21.25vw; font-size: 4.16vw; line-height: 6.25vw; text-align: center; height: 17.9vw;}
                 #answer .desc{padding: 0 5.6vw; font-size: 3.125vw; line-height: 6.25vw; margin-top: 8.54vw; text-align: left; margin-bottom: 18.3vw;}
                 #answer .another{text-align: center; font-size: 4.166vw; padding-bottom: 8.54vw;}
-                    #answer .people .char{width: 24.7vw; height: 24.7vw; background: rgba(255,255,255,0.36); border-radius: 3.54vw; margin:0 2.088vw; display: flex; justify-content: center; align-items: flex-end;}
+                    #answer .people .person_list{width: 24.7vw;}
+                    #answer .people .char{width: 24.7vw; height: 24.7vw; background: rgba(255,255,255,0.36); border-radius: 3.54vw; display: flex; justify-content: center; align-items: flex-end; margin: 0 1.5vw;}
                         #answer .people .char img{width:70%;}
+                    #answer .people .person_name{text-align: center; font-size: 3vw; margin-top: 2vw; width: 24.7vw; margin: 2vw 1.5vw;}
         </style>
     </head>
     <body>
@@ -79,7 +81,7 @@
                 </p>
                 <div class="sns_icon">
                     <img src="./img/kakao.png" alt="" onclick="shareMessage()">
-                    <img src="./img/link.png" alt="" id="get_link">
+                    <img src="./img/link.png" alt="" class="get_link">
                 </div>
             </div>
         </div>
@@ -136,32 +138,59 @@
                 <p class="desc">울릉도 수토관 장한상은 숙종 20년 때 삼척영장 겸 울릉도 수토관으로 울릉도 지역을 조사하였다. 당시는 안용복 사건 등 지금의 울릉도·독도 일대를 둘러싸고 일본과 갈등을 겪던 시기였다. 재상 남구만은 숙종에게 울릉도에 대한 국가적인 차원의 조사를 건의하였고, 삼척영장이었던 장한상이 이를 수행했다.<br><br>울릉도 수토시 육안으로 독도를 살피며 자세하게 서술한 울릉도사적으로 울릉도에서 독도가 육안으로 보인다는 것을 문서로 남겼다.<br>수토한 자료는 현재 울릉도에 대한 역사 연구뿐 만 아니라 독도의 영유권 수호에 있어서도 중요한 가치를 갖는다.<br>이것은 독력성이 없을 때 영토는 육안으로 관측가능하면 우리 영토로 인정된다.</p>
                 <p class="another">다른 인물 알아보기</p>
                 <div class="people">
-                    <div class="char">
-                        <img src="img/thumb11.png" alt="" data-result="11">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb11.png" alt="" data-result="11">
+                        </div>
+                        <p class="person_name">조준기</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb12.png" alt="" data-result="12">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb12.png" alt="" data-result="12">
+                        </div>
+                        <p class="person_name">최종덕</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb13.png" alt="" data-result="13">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb13.png" alt="" data-result="13">
+                        </div>
+                        <p class="person_name">김성도</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb14.png" alt="" data-result="14">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb14.png" alt="" data-result="14">
+                        </div>
+                        <p class="person_name">홍순칠</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb15.png" alt="" data-result="15">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb15.png" alt="" data-result="15">
+                        </div>
+                        <p class="person_name">이사부</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb18.png" alt="" data-result="18">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb18.png" alt="" data-result="18">
+                        </div>
+                        <p class="person_name">이규원</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb20.png" alt="" data-result="20">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb20.png" alt="" data-result="20">
+                        </div>
+                        <p class="person_name">안용복</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb21.png" alt="" data-result="21">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb21.png" alt="" data-result="21">
+                        </div>
+                        <p class="person_name">심홍택</p>
                     </div>
-                    <div class="char">
-                        <img src="img/thumb22.png" alt="" data-result="22">
+                    <div class="person_list">
+                        <div class="char">
+                            <img src="img/thumb22.png" alt="" data-result="22">
+                        </div>
+                        <p class="person_name">장한상</p>
                     </div>
                 </div>
                 <div class="sns">
@@ -171,7 +200,7 @@
                     </p>
                     <div class="sns_icon">
                         <img src="./img/kakao.png" alt="" onclick="shareMessage()">
-                        <img src="./img/link.png" alt="" id="get_link">
+                        <img src="./img/link.png" alt="" class="get_link">
                     </div>
                 </div>
             </div>
@@ -185,15 +214,51 @@
 
             $(function (){
                 data = [];
-                data[5] = {'ok':6,'no':7};
-                data[6] = {'ok':9,'no':14};
-                data[7] = {'ok':11,'no':8};
-                data[8] = {'ok':12,'no':13};
-                data[9] = {'ok':14,'no':15};
-                data[10] = {'ok':16,'no':9};
-                data[16] = {'ok':19,'no':17};
-                data[17] = {'ok':20,'no':19};
-                data[19] = {'ok':21,'no':22};
+                data[5] = {
+                    'message': '사람들 앞에서<br>나의 의견을 말하는데<br>어려움이 없는 편이다.<br>',
+                    'ok':6,
+                    'no':7
+                };
+                data[6] = {
+                    'message': '어떠한 프로젝트를 <br>시작할 때,<br>내가 이끄는 편이다.',
+                    'ok':9,
+                    'no':10
+                };
+                data[7] = {
+                    'message': '하나에 꽂히면 <br>그것만 하는 편이다.<br>',
+                    'ok':11,
+                    'no':8
+                };
+                data[8] = {
+                    'message': '새로운 지역을 탐험하고 <Br>알아가는 것은 흥미로운 일이다.<br>',
+                    'ok':12,
+                    'no':13
+                };
+                data[9] = {
+                    'message': '아닌건 아니라고 소신있게 <Br>말하는 편이다.<br>',
+                    'ok':14,
+                    'no':15
+                };
+                data[10] = {
+                    'message':'정리하고 분석하는 것을<Br> 종아한다.<br>',
+                    'ok':16,
+                    'no':9
+                };
+                data[16] = {
+                    'message':'오늘 있었던 일에 대해<br>기록하는 것을 좋아한다.<br>',
+                    'ok':19,
+                    'no':17
+                };
+                data[17] = {
+                    'message':'말을 똑부러지게 하는 편이다<br><br>',
+                    'ok':20,
+                    'no':19
+                };
+                data[19] = {
+                    'message':'계획이 틀어질 경우를 <br>대비해 다른 계획을 세운다.<br>',
+                    'ok':21,
+                    'no':22
+                };
                 result = [];
                 result[11] = {
                     'name' : '독도 러버 조준기',
@@ -213,7 +278,7 @@
                 result[14] = {
                     'name' : '끝까지 독도를 지킨 <br>홍순칠',
                     'message' : `"이 땅이 뉘 땅인데"`,
-                    'desc' : `1929년 일제강점기때 울릉도에서 태어나 조선국방경비대에 입대해 군인이 되었고 6.25 전쟁에 참전했다가 부상을 당해 전역했다. <br><br>전역 후에는 독도의용수비대를 결성해 이끌었으며 독도대첩 당시 전투를 성공적으로 지휘해 일본 해상보안청의 침곡을 격퇴 시켰다.<br><br>이후에도 독도는 대한민국의 땅임을 알리며 경상남도에 독도개발계획서를 내는 등 다양한 수호활동을 하였지만 박정희 정부는 그의 활동이 일본과의 관계에 악영향을 준다고  부담스럽게 여겨 중앙정보부에 끌려갔다. 말년에는 폐암치료를 받으며 잡지에 글을 연재했다.`
+                    'desc' : `1929년 일제강점기때 울릉도에서 태어나 조선국방경비대에 입대해 군인이 되었고 6.25 전쟁에 참전했다가 부상을 당해 전역했다. <br><br>전역 후에는 독도의용수비대를 결성해 이끌었으며 독도대첩 당시 전투를 성공적으로 지휘해 일본 해상보안청의 침공을 격퇴 시켰다.<br><br>이후에도 독도는 대한민국의 땅임을 알리며 경상남도에 독도개발계획서를 내는 등 다양한 수호활동을 하였지만 박정희 정부는 그의 활동이 일본과의 관계에 악영향을 준다고  부담스럽게 여겨 중앙정보부에 끌려갔다. 말년에는 폐암치료를 받으며 잡지에 글을 연재했다.`
                 };
                 result[15] = {
                     'name' : '지략가 이사부',
@@ -254,20 +319,24 @@
                     scroll_ok = true;
                 })
 
+                last_page = 5;
                 $(".answer").click(function (){
+                    
                     page = $(this).attr('data-page');
+                    last_page = page;
                     if(data[page]){
+                        $("#question .title").html(data[page].message);
                         $(".answer.ok").attr('data-page',data[page].ok);
                         $(".answer.no").attr('data-page',data[page].no);
-                        $(".question_img").attr('src',"img/page"+page+".png");
+                        $(".question_img").attr('src',"img/page"+page+".png?v2");
                     }else{
-                        location.href = "?result="+page;
+                        window.parent.location.href = "index.html?result="+page;
                     }
                 });
 
                 $(".char").click(function (){
                     page = $(this).find("img").attr('data-result');
-                    location.href = "?result="+page;
+                    window.parent.location.href = "index.html?result="+page;
                 })
 
                 window.addEventListener("wheel", function(e){
@@ -295,7 +364,7 @@
                     }
                 });
 
-                $("#get_link").click(function (){
+                $(".get_link").click(function (){
                     navigator.clipboard.writeText(window.location.href)
                     .then(function () {
                         alert('링크 복사가 완료되었습니다.');
@@ -349,7 +418,7 @@
             })
 
             function searchParam(key) {
-                return new URLSearchParams(location.search).get(key);
+                return new URLSearchParams(window.parent.location.search).get(key);
             };
             function viewresult(page){
                 $(window).scrollTop(0);
